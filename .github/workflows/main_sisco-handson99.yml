@@ -34,7 +34,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'staging'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -48,6 +48,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'sisco-handson99'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_365DFB28C856488E8AB78BBC511E1778 }}
+          slot-name: 'staging'
+          publish-profile: ${{ secrets.AZURE_PIBLISH_PROFILE_STAGING }}
           package: '*.jar'
